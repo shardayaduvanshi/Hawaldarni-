@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Read Hawaldarni — Free Preview</title>
+    <meta name="description" content="Read the first 32 chapters of Hawaldarni by Sharda Ashok Yaduvanshi free, page by page.">
+    <meta name="theme-color" content="#f4ecd8">
+    <link rel="icon" href="icon.png">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <style>html,body{margin:0;height:100%;overflow:hidden;overscroll-behavior:none;background:#f4ecd8}</style>
+</head>
+<body>
+        <!-- BOOK READER (Kindle-style, paginated) -->
+        <style>
+            #bookReaderModal.kr{--kr-bg:#f4ecd8;--kr-fg:#3b2f22;--kr-muted:#8a7a63;--kr-bar:#efe5cc;--kr-line:rgba(59,47,34,.16);--kr-accent:#a8452e;
+                position:fixed;inset:0;z-index:10;display:flex;flex-direction:column;background:var(--kr-bg);color:var(--kr-fg);
+                font-family:"Lora",Georgia,"Times New Roman",serif;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+            #bookReaderModal.kr-light{--kr-bg:#ffffff;--kr-fg:#1d1d1d;--kr-muted:#777;--kr-bar:#f5f5f5;--kr-line:rgba(0,0,0,.1)}
+            #bookReaderModal.kr-dark{--kr-bg:#121212;--kr-fg:#d9d4c7;--kr-muted:#8d877a;--kr-bar:#1d1d1d;--kr-line:rgba(255,255,255,.12);--kr-accent:#d27b5f}
+            .kr *{box-sizing:border-box}
+            .kr-top{display:flex;align-items:center;gap:.15rem;height:50px;padding:0 .4rem;border-bottom:1px solid var(--kr-line);transition:opacity .2s}
+            .kr-btn{background:none;border:0;color:var(--kr-fg);font:inherit;font-size:1.05rem;min-width:44px;height:44px;border-radius:8px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0 .5rem}
+            .kr-btn:hover{background:var(--kr-line)}
+            .kr-aa{font-family:"Playfair Display",Georgia,serif;font-weight:600}
+            .kr-title{flex:1;min-width:0;text-align:center;font-size:.82rem;color:var(--kr-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.02em}
+            .kr-stage{position:relative;flex:1;overflow:hidden;touch-action:manipulation;user-select:none;-webkit-user-select:none;cursor:default}
+            .kr-viewport{position:absolute;top:26px;bottom:14px;left:50%;transform:translateX(-50%);width:min(640px,calc(100% - 48px));overflow:hidden}
+            .kr-flow{height:100%;column-fill:auto;font-size:var(--kr-fs,17px);line-height:var(--kr-lh,1.65);text-align:justify;hyphens:auto;-webkit-hyphens:auto;widows:2;orphans:2;will-change:transform}
+            .kr-flow p{margin:0;text-indent:1.4em}
+            .kr-flow h1{font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:1.42em;line-height:1.3;text-align:center;margin:1.8em 0 1.5em;text-indent:0;hyphens:none;-webkit-hyphens:none}
+            .kr-flow h1+p,.kr-flow p.scenebreak+p{text-indent:0}
+            .kr-flow h1+p::first-letter{font-family:"Playfair Display",Georgia,serif;float:left;font-size:3.05em;line-height:.86;padding:.07em .09em 0 0;color:var(--kr-accent)}
+            .kr-flow p.scenebreak{text-align:center;text-indent:0;margin:.9em 0;letter-spacing:.45em}
+            .kr-flow .tp{text-align:center;padding-top:8%}
+            .kr-flow .tp h3{font-family:"Playfair Display",Georgia,serif;font-weight:600;margin:.4em 0;text-indent:0}
+            .kr-flow .tp p{text-align:center;text-indent:0;margin:0 0 .85em;hyphens:none;-webkit-hyphens:none}
+            .kr-flow .tp .bold-line{font-size:1.08em;margin-top:.8em}
+            .kr-cover{height:100%;display:flex;align-items:center;justify-content:center}
+            .kr-cover img{max-width:100%;max-height:100%;border-radius:3px;box-shadow:0 14px 34px rgba(0,0,0,.35)}
+            .kr-end{break-before:column;-webkit-column-break-before:always;text-align:center;padding-top:22%}
+            .kr-end p{text-indent:0;text-align:center}
+            .kr-end-note{font-style:italic;color:var(--kr-muted)}
+            .kr-amz{display:inline-block;background:#a8452e;color:#fff !important;padding:.85em 1.5em;border-radius:6px;text-decoration:none;font-weight:600;margin:1.3em 0 .9em;font-size:.95em}
+            .kr-end-sub{font-size:.85em;color:var(--kr-muted)}
+            .kr-in{animation:krIn .28s ease}
+            @keyframes krIn{from{opacity:0}to{opacity:1}}
+            .kr-arrow{display:none;position:absolute;top:50%;transform:translateY(-50%);z-index:2;background:none;border:0;color:var(--kr-muted);font-size:2.2rem;width:48px;height:96px;cursor:pointer;border-radius:8px;opacity:.55}
+            .kr-arrow:hover{opacity:1;background:var(--kr-line)}
+            .kr-arrow:disabled{visibility:hidden}
+            .kr-arrow-l{left:8px}.kr-arrow-r{right:8px}
+            @media (min-width:820px){.kr-arrow{display:block}}
+            .kr-bottom{padding:.4rem 1rem .55rem;border-top:1px solid var(--kr-line);font-size:.76rem;color:var(--kr-muted);transition:opacity .2s}
+            .kr-meta{display:flex;justify-content:space-between;gap:1rem;margin-bottom:.15rem;font-variant-numeric:tabular-nums}
+            .kr-range{width:100%;accent-color:var(--kr-accent);margin:.2rem 0 0;height:22px;cursor:pointer}
+            .kr-chrome-hidden .kr-top,.kr-chrome-hidden .kr-bottom{opacity:0;pointer-events:none}
+            .kr-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.38);opacity:0;pointer-events:none;transition:opacity .25s;z-index:20}
+            .kr-backdrop.open{opacity:1;pointer-events:auto}
+            .kr-panel{position:absolute;top:0;bottom:0;left:0;width:min(360px,88%);background:var(--kr-bg);border-right:1px solid var(--kr-line);transform:translateX(-102%);transition:transform .25s ease;z-index:21;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px)}
+            .kr-panel.open{transform:none;box-shadow:8px 0 30px rgba(0,0,0,.25)}
+            .kr-panel-head{display:flex;align-items:center;justify-content:space-between;padding:.6rem .6rem .6rem 1.1rem;border-bottom:1px solid var(--kr-line)}
+            .kr-panel-head h3{margin:0;font-family:"Playfair Display",Georgia,serif;font-size:1.1rem;font-weight:600}
+            .kr-toc-list{overflow-y:auto;flex:1;padding:.3rem 0 1rem;-webkit-overflow-scrolling:touch}
+            .kr-toc-item{display:flex;width:100%;gap:.8rem;justify-content:space-between;align-items:baseline;text-align:left;background:none;border:0;border-left:3px solid transparent;color:var(--kr-fg);font:inherit;font-size:.9rem;line-height:1.4;padding:.7rem 1.1rem .7rem .95rem;cursor:pointer}
+            .kr-toc-item:hover{background:var(--kr-line)}
+            .kr-toc-item.on{border-left-color:var(--kr-accent);color:var(--kr-accent);font-weight:600}
+            .kr-toc-pg{color:var(--kr-muted);font-size:.78rem;flex-shrink:0;font-variant-numeric:tabular-nums}
+            .kr-pop{position:absolute;top:56px;right:8px;width:min(310px,calc(100% - 16px));background:var(--kr-bar);border:1px solid var(--kr-line);border-radius:12px;padding:1rem;z-index:22;box-shadow:0 12px 34px rgba(0,0,0,.22);display:none;color:var(--kr-fg)}
+            .kr-pop.open{display:block}
+            .kr-row{margin-bottom:.9rem}.kr-row:last-child{margin-bottom:0}
+            .kr-label{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--kr-muted);margin-bottom:.4rem}
+            .kr-seg{display:flex;gap:.4rem;align-items:center}
+            .kr-seg button{flex:1;min-height:40px;border:1px solid var(--kr-line);background:var(--kr-bg);color:var(--kr-fg);border-radius:8px;font:inherit;font-size:.85rem;cursor:pointer}
+            .kr-seg button.on{border-color:var(--kr-accent);box-shadow:inset 0 0 0 1px var(--kr-accent);font-weight:600}
+            .kr-fs-val{min-width:2.4rem;text-align:center;font-variant-numeric:tabular-nums}
+            .kr-sw-light{background:#fff !important;color:#1d1d1d !important}.kr-sw-sepia{background:#f4ecd8 !important;color:#3b2f22 !important}.kr-sw-dark{background:#121212 !important;color:#d9d4c7 !important}
+            .kr-toast{position:absolute;left:50%;bottom:88px;transform:translateX(-50%);background:var(--kr-fg);color:var(--kr-bg);padding:.55rem 1rem;border-radius:999px;font-size:.8rem;z-index:23;display:none;white-space:nowrap;max-width:calc(100% - 24px);overflow:hidden;text-overflow:ellipsis}
+            .kr-toast.open{display:block}
+            .kr-toast button{background:none;border:0;color:inherit;text-decoration:underline;font:inherit;cursor:pointer;padding:0 0 0 .3rem}
+            a.kr-btn{text-decoration:none}
+            #krMeasure{position:absolute;left:-30000px;top:0;visibility:hidden;pointer-events:none}
+        </style>
+        <div id="bookReaderModal" class="kr kr-sepia" role="dialog" aria-label="Hawaldarni free reader">
+            <div class="kr-top">
+                <a class="kr-btn" href="index.html" aria-label="Back to the book page" title="Back">←</a>
+                <button class="kr-btn" onclick="krToggleToc()" aria-label="Contents">☰</button>
+                <div class="kr-title" id="krTitle">Hawaldarni</div>
+                <button class="kr-btn" id="krFsBtn" onclick="krFullscreen()" aria-label="Full screen" title="Full screen">⛶</button>
+                <button class="kr-btn kr-aa" onclick="krToggleSettings()" aria-label="Text settings">Aa</button>
+            </div>
+
+            <div class="kr-stage" id="krStage">
+                <button class="kr-arrow kr-arrow-l" id="krArrowL" onclick="krPrev()" aria-label="Previous page">‹</button>
+                <div class="kr-viewport" id="krViewport"><div class="kr-flow" id="krFlow"></div></div>
+                <button class="kr-arrow kr-arrow-r" id="krArrowR" onclick="krNext()" aria-label="Next page">›</button>
+                <div class="kr-flow" id="krMeasure" aria-hidden="true"></div>
+            </div>
+
+            <div class="kr-bottom">
+                <div class="kr-meta"><span id="krLeft"></span><span id="krPageInfo"></span></div>
+                <input class="kr-range" id="krRange" type="range" min="1" max="1" value="1" aria-label="Go to page">
+            </div>
+
+            <div class="kr-backdrop" id="krBackdrop" onclick="krClosePanels()"></div>
+
+            <div class="kr-panel" id="krToc" aria-label="Contents">
+                <div class="kr-panel-head"><h3>Contents</h3><button class="kr-btn" onclick="krClosePanels()" aria-label="Close contents">✕</button></div>
+                <div class="kr-toc-list" id="krTocList"></div>
+            </div>
+
+            <div class="kr-pop" id="krSettings" aria-label="Text settings">
+                <div class="kr-row">
+                    <div class="kr-label">Text size</div>
+                    <div class="kr-seg"><button onclick="krFont(-1)" aria-label="Smaller text">A−</button><span class="kr-fs-val" id="krFsLabel">17</span><button onclick="krFont(1)" aria-label="Larger text" style="font-size:1.05rem">A+</button></div>
+                </div>
+                <div class="kr-row">
+                    <div class="kr-label">Theme</div>
+                    <div class="kr-seg"><button class="kr-sw-light" data-kr-theme="light" onclick="krTheme('light')">White</button><button class="kr-sw-sepia" data-kr-theme="sepia" onclick="krTheme('sepia')">Sepia</button><button class="kr-sw-dark" data-kr-theme="dark" onclick="krTheme('dark')">Dark</button></div>
+                </div>
+                <div class="kr-row">
+                    <div class="kr-label">Line spacing</div>
+                    <div class="kr-seg"><button data-kr-lh="0" onclick="krSpacing(0)">Compact</button><button data-kr-lh="1" onclick="krSpacing(1)">Normal</button><button data-kr-lh="2" onclick="krSpacing(2)">Wide</button></div>
+                </div>
+            </div>
+
+            <div class="kr-toast" id="krMsg"></div>
+            <div class="kr-toast" id="krToast">Continuing where you left off ·<button onclick="krGo(0,0)">Start from beginning</button></div>
+        </div>
+
+    <script src="config.js"></script>
+    <script src="analytics.js"></script>
+    <script src="book.js"></script>
+    <script>
+            var KR = {ch:0, pg:0, counts:[], starts:[], total:1, W:0, H:0, G:48, fsI:3, theme:'sepia', lhI:1, open:false, swiped:false, tx:0, ty:0, rt:null, toastT:null};
+            var KR_FS = [14, 15, 16, 17, 18, 20, 22, 24];
+            var KR_LH = [1.5, 1.65, 1.85];
+            var KR_AMAZON = (window.HAWALDARNI_CONFIG && HAWALDARNI_CONFIG.amazonUrl) || 'https://amazon.in/dp/B0HL9B5511';
+
+            function krEl(id) { return document.getElementById(id); }
+            function krEsc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+            function krName(i) { return i === 0 ? 'Cover' : (i === 1 ? 'Title Page & Copyright' : chaptersData[i].title); }
+
+            function krLoadPrefs() {
+                try {
+                    var p = JSON.parse(localStorage.getItem('hwdReaderPrefs') || '{}');
+                    if (p.fsI != null && KR_FS[p.fsI]) KR.fsI = p.fsI;
+                    if (p.theme === 'light' || p.theme === 'sepia' || p.theme === 'dark') KR.theme = p.theme;
+                    if (p.lhI != null && KR_LH[p.lhI]) KR.lhI = p.lhI;
+                } catch (e) {}
+            }
+            function krSavePrefs() { try { localStorage.setItem('hwdReaderPrefs', JSON.stringify({fsI:KR.fsI, theme:KR.theme, lhI:KR.lhI})); } catch (e) {} }
+            function krSavePos() { try { localStorage.setItem('hwdReaderPos', JSON.stringify({ch:KR.ch, f:(KR.counts[KR.ch] ? KR.pg / KR.counts[KR.ch] : 0)})); } catch (e) {} }
+            function krReadPos() { try { return JSON.parse(localStorage.getItem('hwdReaderPos') || 'null'); } catch (e) { return null; } }
+
+            function krApplyPrefs() {
+                var m = krEl('bookReaderModal');
+                m.classList.remove('kr-light', 'kr-sepia', 'kr-dark');
+                m.classList.add('kr-' + KR.theme);
+                m.style.setProperty('--kr-fs', KR_FS[KR.fsI] + 'px');
+                m.style.setProperty('--kr-lh', KR_LH[KR.lhI]);
+                krEl('krFsLabel').textContent = KR_FS[KR.fsI];
+                document.querySelectorAll('[data-kr-theme]').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-kr-theme') === KR.theme); });
+                document.querySelectorAll('[data-kr-lh]').forEach(function (b) { b.classList.toggle('on', +b.getAttribute('data-kr-lh') === KR.lhI); });
+            }
+
+            function krEndHTML() {
+                return '<div class="kr-end"><p class="kr-end-note">The story continues beyond these chapters…</p>' +
+                       '<p><a class="kr-amz" href="' + KR_AMAZON + '" target="_blank" rel="noopener" onclick="krTrack(\'amazon-click-reader\', \'Amazon button at end of free preview\')">📘 Get the Full Book on Amazon</a></p>' +
+                       '<p class="kr-end-sub">Continue with all chapters and the complete ending</p></div>';
+            }
+            function krFill(el, i) {
+                el.innerHTML = chaptersData[i].content + (i === chaptersData.length - 1 ? krEndHTML() : '');
+            }
+            function krSetCols(el) {
+                el.style.width = KR.W + 'px';
+                el.style.height = KR.H + 'px';
+                el.style.columnWidth = KR.W + 'px';
+                el.style.columnGap = KR.G + 'px';
+            }
+            function krCount(el) {
+                var base = el.getBoundingClientRect().left, r = document.createRange(), mx = 0;
+                r.selectNodeContents(el);
+                var rs = r.getClientRects();
+                for (var i = 0; i < rs.length; i++) {
+                    if (rs[i].width > 0 && rs[i].right - base > mx) mx = rs[i].right - base;
+                }
+                return Math.max(1, Math.ceil((mx - 1) / (KR.W + KR.G)));
+            }
+
+            function krLayout() {
+                var vp = krEl('krViewport');
+                KR.W = Math.floor(vp.clientWidth);
+                KR.H = Math.floor(vp.clientHeight);
+                krSetCols(krEl('krFlow'));
+                var m = krEl('krMeasure');
+                krSetCols(m);
+                KR.counts = [1];
+                for (var i = 1; i < chaptersData.length; i++) { krFill(m, i); KR.counts[i] = krCount(m); }
+                m.innerHTML = '';
+                KR.starts = []; var s = 0;
+                for (var j = 0; j < KR.counts.length; j++) { KR.starts[j] = s; s += KR.counts[j]; }
+                KR.total = s;
+                krEl('krRange').max = KR.total;
+                krBuildToc();
+            }
+
+            function krBuildToc() {
+                var html = '';
+                for (var i = 0; i < chaptersData.length; i++) {
+                    html += '<button class="kr-toc-item" data-i="' + i + '"><span>' + krEsc(krName(i)) + '</span><span class="kr-toc-pg">' + (KR.starts[i] + 1) + '</span></button>';
+                }
+                krEl('krTocList').innerHTML = html;
+            }
+
+            function krRender(fade) {
+                var f = krEl('krFlow');
+                krFill(f, KR.ch);
+                f.style.transition = 'none';
+                f.style.transform = 'translateX(' + (-KR.pg * (KR.W + KR.G)) + 'px)';
+                if (fade) { f.classList.remove('kr-in'); void f.offsetWidth; f.classList.add('kr-in'); }
+                krUI();
+            }
+            function krShift() {
+                var f = krEl('krFlow');
+                f.style.transition = 'transform .3s ease';
+                f.style.transform = 'translateX(' + (-KR.pg * (KR.W + KR.G)) + 'px)';
+                krUI();
+            }
+
+            function krUI() {
+                var g = KR.starts[KR.ch] + KR.pg + 1, left = KR.counts[KR.ch] - KR.pg - 1;
+                krEl('krTitle').textContent = krName(KR.ch);
+                krEl('krPageInfo').textContent = 'Page ' + g + ' of ' + KR.total + ' · ' + Math.round(g / KR.total * 100) + '%';
+                krEl('krLeft').textContent = KR.ch < 2 ? '' : (left > 0 ? left + (left === 1 ? ' page' : ' pages') + ' left in chapter' : 'Last page of chapter');
+                krEl('krRange').value = g;
+                krEl('krArrowL').disabled = (g === 1);
+                krEl('krArrowR').disabled = (g === KR.total);
+                document.querySelectorAll('.kr-toc-item').forEach(function (b) { b.classList.toggle('on', +b.getAttribute('data-i') === KR.ch); });
+                krSavePos();
+                krStats(g);
+            }
+
+            function krNext() {
+                if (KR.pg < KR.counts[KR.ch] - 1) { KR.pg++; krShift(); }
+                else if (KR.ch < chaptersData.length - 1) { KR.ch++; KR.pg = 0; krRender(true); }
+            }
+            function krPrev() {
+                if (KR.pg > 0) { KR.pg--; krShift(); }
+                else if (KR.ch > 0) { KR.ch--; KR.pg = KR.counts[KR.ch] - 1; krRender(true); }
+            }
+            function krGo(ch, pg) {
+                KR.ch = Math.max(0, Math.min(ch, chaptersData.length - 1));
+                KR.pg = Math.max(0, Math.min(pg, KR.counts[KR.ch] - 1));
+                krRender(true);
+                krClosePanels();
+                krToast(false);
+            }
+            function krGoGlobal(g) {
+                g = Math.max(0, Math.min(g, KR.total - 1));
+                var ch = 0;
+                for (var i = 0; i < KR.starts.length; i++) if (KR.starts[i] <= g) ch = i;
+                krGo(ch, g - KR.starts[ch]);
+            }
+
+            function krRelayout() {
+                var frac = KR.counts[KR.ch] ? KR.pg / KR.counts[KR.ch] : 0;
+                krLayout();
+                KR.pg = Math.min(KR.counts[KR.ch] - 1, Math.floor(frac * KR.counts[KR.ch] + 0.0001));
+                krRender(false);
+            }
+            function krFont(d) { var n = KR.fsI + d; if (n < 0 || n >= KR_FS.length) return; KR.fsI = n; krApplyPrefs(); krSavePrefs(); krRelayout(); }
+            function krTheme(t) { KR.theme = t; krApplyPrefs(); krSavePrefs(); }
+            function krSpacing(i) { KR.lhI = i; krApplyPrefs(); krSavePrefs(); krRelayout(); }
+
+            function krToggleToc() {
+                var open = !krEl('krToc').classList.contains('open');
+                krClosePanels();
+                if (open) {
+                    krEl('krToc').classList.add('open'); krEl('krBackdrop').classList.add('open');
+                    var cur = krEl('krTocList').querySelector('.kr-toc-item.on');
+                    if (cur) cur.scrollIntoView({block: 'center'});
+                }
+            }
+            function krToggleSettings() {
+                var open = !krEl('krSettings').classList.contains('open');
+                krClosePanels();
+                if (open) { krEl('krSettings').classList.add('open'); krEl('krBackdrop').classList.add('open'); }
+            }
+            function krClosePanels() {
+                ['krToc', 'krSettings', 'krBackdrop'].forEach(function (id) { krEl(id).classList.remove('open'); });
+            }
+            function krPanelsOpen() { return krEl('krBackdrop').classList.contains('open'); }
+            function krToast(show) {
+                var t = krEl('krToast');
+                clearTimeout(KR.toastT);
+                t.classList.toggle('open', !!show);
+                if (show) KR.toastT = setTimeout(function () { t.classList.remove('open'); }, 6000);
+            }
+
+            function openBookReader() {
+                var m = krEl('bookReaderModal');
+                krLoadPrefs();
+                krApplyPrefs();
+                m.classList.remove('kr-chrome-hidden');
+                m.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                KR.open = true;
+                var start = function () {
+                    requestAnimationFrame(function () {
+                        krLayout();
+                        var p = krReadPos();
+                        if (p && p.ch >= 2 && p.ch < chaptersData.length) {
+                            KR.ch = p.ch;
+                            KR.pg = Math.min(KR.counts[p.ch] - 1, Math.floor((p.f || 0) * KR.counts[p.ch] + 0.0001));
+                            krRender(false);
+                            krToast(true);
+                        } else {
+                            KR.ch = 0; KR.pg = 0; krRender(false);
+                        }
+                    });
+                };
+                if (document.fonts && document.fonts.ready) document.fonts.ready.then(start, start); else start();
+            }
+            function closeBookReader() { krSavePos(); location.href = 'index.html'; }
+
+            (function krWire() {
+                var st = krEl('krStage');
+                st.addEventListener('click', function (e) {
+                    if (e.target.closest('a,button')) return;
+                    if (KR.swiped) { KR.swiped = false; return; }
+                    var r = st.getBoundingClientRect(), x = (e.clientX - r.left) / r.width;
+                    if (x < 0.33) krPrev();
+                    else if (x > 0.67) krNext();
+                    else krEl('bookReaderModal').classList.toggle('kr-chrome-hidden');
+                });
+                st.addEventListener('touchstart', function (e) {
+                    KR.tx = e.changedTouches[0].clientX; KR.ty = e.changedTouches[0].clientY;
+                }, {passive: true});
+                st.addEventListener('touchend', function (e) {
+                    var dx = e.changedTouches[0].clientX - KR.tx, dy = e.changedTouches[0].clientY - KR.ty;
+                    if (Math.abs(dx) > 40 && Math.abs(dx) > 1.5 * Math.abs(dy)) {
+                        KR.swiped = true;
+                        setTimeout(function () { KR.swiped = false; }, 400);
+                        if (dx < 0) krNext(); else krPrev();
+                    }
+                }, {passive: true});
+                krEl('krTocList').addEventListener('click', function (e) {
+                    var b = e.target.closest('.kr-toc-item');
+                    if (b) krGo(+b.getAttribute('data-i'), 0);
+                });
+                var rg = krEl('krRange');
+                rg.addEventListener('input', function () { krEl('krPageInfo').textContent = 'Go to page ' + rg.value + ' of ' + KR.total; });
+                rg.addEventListener('change', function () { krGoGlobal(+rg.value - 1); });
+                document.addEventListener('keydown', function (e) {
+                    if (!KR.open) return;
+                    if (e.key === 'Escape') { if (krPanelsOpen()) { e.preventDefault(); krClosePanels(); } return; }
+                    if (e.target && e.target.tagName === 'INPUT') return;
+                    if (krPanelsOpen()) return;
+                    if (e.key === 'ArrowRight' || e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) { e.preventDefault(); krNext(); }
+                    else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || (e.key === ' ' && e.shiftKey)) { e.preventDefault(); krPrev(); }
+                });
+                window.addEventListener('resize', function () {
+                    if (!KR.open) return;
+                    clearTimeout(KR.rt);
+                    KR.rt = setTimeout(krRelayout, 200);
+                });
+            })();
+
+            /* ---------- statistics (only sent if config.js has a GoatCounter code) ---------- */
+            var KRS = { chapters: {}, marks: {}, active: 0, last: Date.now(), times: [5, 15, 30, 60], sentT: {} };
+            function krTrack(name, title) { if (window.hwdTrack) window.hwdTrack(name, title); }
+            function krPad(n) { return (n < 10 ? '0' : '') + n; }
+            function krStats(g) {
+                KRS.last = Date.now();
+                if (KR.ch >= 2 && !KRS.chapters[KR.ch]) {
+                    KRS.chapters[KR.ch] = 1;
+                    krTrack('read-section-' + krPad(KR.ch - 1), 'Reached: ' + chaptersData[KR.ch].title);
+                }
+                var pct = g / KR.total * 100;
+                [25, 50, 75, 100].forEach(function (m) {
+                    if (pct >= m && !KRS.marks[m]) { KRS.marks[m] = 1; krTrack('read-progress-' + m, m === 100 ? 'Finished the free preview' : 'Read ' + m + '% of the free preview'); }
+                });
+            }
+            setInterval(function () {               // active reading time (tab visible, a page turned in the last 3 minutes)
+                if (document.hidden || Date.now() - KRS.last > 180000) return;
+                KRS.active += 15;
+                KRS.times.forEach(function (m) {
+                    if (KRS.active >= m * 60 && !KRS.sentT[m]) { KRS.sentT[m] = 1; krTrack('read-time-' + krPad(m) + 'min', 'Read for ' + m + '+ minutes'); }
+                });
+            }, 15000);
+
+            /* ---------- full screen ---------- */
+            function krIsFull() { return !!(document.fullscreenElement || document.webkitFullscreenElement); }
+            function krMsg(t) {
+                var el = krEl('krMsg'); el.textContent = t; el.classList.add('open');
+                clearTimeout(KR.msgT); KR.msgT = setTimeout(function () { el.classList.remove('open'); }, 4000);
+            }
+            function krFullscreen() {
+                if (krIsFull()) { (document.exitFullscreen || document.webkitExitFullscreen).call(document); return; }
+                var el = document.documentElement, req = el.requestFullscreen || el.webkitRequestFullscreen;
+                if (!req) { krMsg('Full screen is not available on this device.'); return; }
+                try {
+                    var r = req.call(el);
+                    if (r && r.catch) r.catch(function () { krMsg('Full screen is not available here.'); });
+                } catch (e) { krMsg('Full screen is not available here.'); }
+            }
+            function krFsIcon() { var b = krEl('krFsBtn'); b.textContent = krIsFull() ? '⤡' : '⛶'; b.title = krIsFull() ? 'Exit full screen' : 'Full screen'; }
+            document.addEventListener('fullscreenchange', krFsIcon);
+            document.addEventListener('webkitfullscreenchange', krFsIcon);
+            (function () {
+                var el = document.documentElement;
+                if (!(el.requestFullscreen || el.webkitRequestFullscreen) || !(document.fullscreenEnabled || document.webkitFullscreenEnabled)) krEl('krFsBtn').style.display = 'none';
+            })();
+
+            /* ---------- start ---------- */
+            krTrack('reader-open', 'Opened the free reader');
+            openBookReader();
+
+    </script>
+</body>
+</html>
