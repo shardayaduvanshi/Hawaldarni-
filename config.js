@@ -11,5 +11,12 @@ window.HAWALDARNI_CONFIG = {
   goatcounterCode: "",
 
   // Where the "Get the Full Book" buttons go
-  amazonUrl: "https://amazon.in/dp/B0HL9B5511"
+  amazonUrl: "https://amazon.in/dp/B0HL9B5511",
+
+  // English edition on Google Play Books
+  googlePlayUrl: "https://play.google.com/store/books/details?id=m7MTEgAAQBAJ",
+
+  // Hindi edition (हवलदारनी) — paste its Amazon link between the quotes once it is live.
+  // Until then the Hindi reader's button opens an Amazon search for the book.
+  amazonUrlHi: ""
 };
