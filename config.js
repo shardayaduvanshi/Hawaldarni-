@@ -16,7 +16,6 @@ window.HAWALDARNI_CONFIG = {
   // English edition on Google Play Books
   googlePlayUrl: "https://play.google.com/store/books/details?id=m7MTEgAAQBAJ",
 
-  // Hindi edition (हवलदारनी) — paste its Amazon link between the quotes once it is live.
-  // Until then the Hindi reader's button opens an Amazon search for the book.
-  amazonUrlHi: ""
+  // Hindi edition (हवलदारनी) on Amazon Kindle
+  amazonUrlHi: "https://www.amazon.in/dp/B0HMD7QMZW"
 };

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>हवलदारनी — निःशुल्क पढ़ें</title>
-    <meta name="description" content="शारदा अशोक यदुवंशी के उपन्यास हवलदारनी: एक जवाब, बहुत देर से के शुरुआती अध्याय निःशुल्क पढ़ें, पन्ना-पन्ना।">
+    <meta name="description" content="शारदा अशोक यदुवंशी के उपन्यास हवलदारनी: एक जवाब, बहुत देर से पूरी किताब निःशुल्क पढ़ें, पन्ना-पन्ना।">
     <meta name="theme-color" content="#f4ecd8">
     <link rel="icon" href="icon.png">
     <link rel="apple-touch-icon" href="icon.png">
@@ -93,6 +93,7 @@
                 <a class="kr-btn" href="index.html" aria-label="पुस्तक के पृष्ठ पर लौटें" title="वापस">←</a>
                 <button class="kr-btn" onclick="krToggleToc()" aria-label="अनुक्रमणिका">☰</button>
                 <div class="kr-title" id="krTitle">हवलदारनी</div>
+                <button class="kr-btn" onclick="hwdShare('reader-top')" aria-label="साझा करें" title="साझा करें">📤</button>
                 <button class="kr-btn" id="krFsBtn" onclick="krFullscreen()" aria-label="पूरी स्क्रीन" title="पूरी स्क्रीन">⛶</button>
                 <button class="kr-btn kr-aa" onclick="krToggleSettings()" aria-label="अक्षर की सेटिंग">Aa</button>
             </div>
@@ -138,6 +139,7 @@
     <script src="config.js"></script>
     <script src="analytics.js"></script>
     <script src="book-hi.js"></script>
+    <script src="share.js"></script>
     <script>
             var KR = {ch:0, pg:0, counts:[], starts:[], total:1, W:0, H:0, G:48, fsI:3, theme:'sepia', lhI:2, open:false, swiped:false, tx:0, ty:0, rt:null, toastT:null};
             var KR_FS = [14, 15, 16, 17, 18, 20, 22, 24];
@@ -172,15 +174,16 @@
             }
 
             function krEndHTML() {
-                return '<div class="kr-end">' +
-                  '<p class="kr-hook-h">वह तो बस अलविदा था।</p>' +
-                  '<p class="kr-hook-i">नैना ने सोचा था, कहानी यहीं ख़त्म होती है।<br>पर यह तो शुरुआत का अंत था।</p>' +
-                  '<p>क्योंकि दिल्ली के किसी बंद कमरे में कैप्टन विक्रम राठौड़ की फ़ाइल का दूसरा पन्ना अभी-अभी खुला है। तीसरा आने वाला है।</p>' +
-                  '<p>कौन उस पर नज़र रख रहा था? क्यों? और उस आख़िरी शाम के बाद उन्होंने उसे क्या करते देखा?</p>' +
-                  '<p>एक औरत उसकी ज़िंदगी में क़दम रखने वाली है, उस सबसे बेख़बर जो उससे पहले गुज़र चुका है। ख़ून से लिखा एक वादा ग्यारह साल लंबी चुप्पी से टकराने वाला है।</p>' +
-                  '<p class="kr-hook-i">आपने अलविदा पढ़ लिया।<br><b>अब तक आपने यह नहीं पढ़ा कि उसकी क़ीमत क्या थी।</b></p>' +
-                  '</div><div class="kr-end kr-end2"><p class="kr-end-note">कहानी का बाक़ी हिस्सा इस पन्ने के उस पार आपका इंतज़ार कर रहा है।</p><p><a class="kr-amz" href="' + KR_AMAZON + '" target="_blank" rel="noopener" onclick="krTrack(\'amazon-click-reader\', \'Amazon button at end of free preview\')">📘 पूरी किताब Amazon पर पढ़ें</a></p>' +
-                  '<p class="kr-end-sub">सभी अध्याय और पूरे अंत के साथ आगे पढ़ें</p></div>';
+                                return '<div class="kr-end">' +
+                  '<p class="kr-hook-h">समाप्त</p>' +
+                  '<p class="kr-hook-i">हवलदारनी — एक जवाब, बहुत देर से</p>' +
+                  '<p>इस सफ़र में साथ रहने के लिए धन्यवाद।</p>' +
+                  '<p>अगर यह कहानी आपके दिल तक पहुँची, तो लेखिका का साथ दीजिए।</p>' +
+                  '<p class="kr-hook-i">— शारदा अशोक यदुवंशी</p>' +
+                  '</div><div class="kr-end kr-end2">' +
+                  '<p><a class="kr-amz" href="' + KR_AMAZON + '" target="_blank" rel="noopener" onclick="krTrack(\'amazon-click-reader-end\', \'Amazon button at end of full book\')">📘 किताब Amazon पर लें</a></p>' +
+                  '<p><a class="kr-amz" href="javascript:void(0)" onclick="hwdShare(\'reader-end\')">📤 दोस्तों से साझा करें</a></p>' +
+                  '<p class="kr-end-sub">Amazon पर आपकी एक समीक्षा भी इस कहानी को किसी और पाठक तक पहुँचा सकती है।</p></div>';
             }
             function krFill(el, i) {
                 el.innerHTML = chaptersData[i].content + (i === chaptersData.length - 1 ? krEndHTML() : '');
@@ -392,7 +395,7 @@
                 }
                 var pct = g / KR.total * 100;
                 [25, 50, 75, 100].forEach(function (m) {
-                    if (pct >= m && !KRS.marks[m]) { KRS.marks[m] = 1; krTrack('read-progress-' + m, m === 100 ? 'Finished the free preview' : 'Read ' + m + '% of the free preview'); }
+                    if (pct >= m && !KRS.marks[m]) { KRS.marks[m] = 1; krTrack('read-progress-' + m, m === 100 ? 'Finished the full book' : 'Read ' + m + '% of the book'); }
                 });
             }
             setInterval(function () {               // active reading time (tab visible, a page turned in the last 3 minutes)
